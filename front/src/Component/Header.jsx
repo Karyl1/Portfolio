@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import backgroundHeader from '../asset/PinClipart.com_dover-clip-art-free_3358419.png';
 
 class HeaderApp extends Component {
 
@@ -31,8 +30,7 @@ class HeaderApp extends Component {
 
   render(){
   const { fixed, heightNavBar } = this.state;
-  let fixedNavbar = 'buttonGroup'; 
-  fixed ? fixedNavbar = 'buttonGroupFixed' : fixedNavbar = 'buttonGroup'
+  let fixedNavbar = fixed ? 'buttonGroupFixed' : 'buttonGroup';
   return (
     <Grid>
       <Grid className='logoHeader'>
