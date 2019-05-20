@@ -1,30 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+// import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid'
-
-const styles = (theme) => ({
-  button: {
-    margin: theme.spacing.unit,
-  },
-  buttonGroup: {
-    background: 'white',
-    zIndex: 1,
-    boxShadow: '1px 0px 10px black'
-  },
-  buttonGroupFixed: {
-    background: 'white',
-    zIndex: 1,
-    position: 'fixed',
-    top: '0',
-    boxShadow: '1px 0px 10px black'
-  },
-  image: {
-    display: 'flex',
-    justifyContent: 'center',
-  }
-});
+import Grid from '@material-ui/core/Grid';
+import backgroundHeader from '../asset/PinClipart.com_dover-clip-art-free_3358419.png';
 
 class HeaderApp extends Component {
 
@@ -52,23 +30,24 @@ class HeaderApp extends Component {
   }
 
   render(){
-  const { classes } = this.props;
   const { fixed, heightNavBar } = this.state;
+  let fixedNavbar = 'buttonGroup'; 
+  fixed ? fixedNavbar = 'buttonGroupFixed' : fixedNavbar = 'buttonGroup'
   return (
     <Grid>
-      <Grid className={classes.image}>
-        <img src='https://avatars3.githubusercontent.com/u/8874047?s=200&v=4' alt='Wild Code School Logo' />
+      <Grid className='logoHeader'>
+        <img src='http://arbreapivoines.com/wp-content/uploads/revslider/comingsoon/welcome.png' alt='welcome'/>
       </Grid>
         {fixed ? <div style={{height: `${heightNavBar}px`}}/> : '' }
       <Grid item xs={12}>
-        <Grid id='topScroll' container className={fixed ? classes.buttonGroupFixed : classes.buttonGroup } justify='center'>
-          <Button varient='contained' size='large' className={classes.button}>
+        <Grid id='topScroll' container className={fixedNavbar} justify='center'>
+          <Button varient='contained' size='large' className='button'>
             Accueil
         </Button>
-          <Button varient='contained' size='large' className={classes.button}>
+          <Button varient='contained' size='large' className='button'>
             Parcours
         </Button>
-          <Button varient='contained' size='large' className={classes.button}>
+          <Button varient='contained' size='large' className='button'>
             Contacter
         </Button>
         </Grid>
@@ -78,7 +57,7 @@ class HeaderApp extends Component {
 }}
 
 HeaderApp.propTypes = {
-  classes: PropTypes.object.isRequired,
+  // classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HeaderApp);
+export default HeaderApp;
