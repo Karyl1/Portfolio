@@ -1,23 +1,26 @@
 [
   {
-    "nameProject": "CyptoTrader",
+    "nameProject": "CryptoTrader",
     "imageProject": "https://image.noelshack.com/fichiers/2019/21/1/1558356766-cryptotrader.png",
-    "lienPresProject": "project/CryptoTrader",
-    "lienTechProject": "projetTech/CryptoTrader",
+    "descProject": "Application desktop autour de la Crypto-Monaie",
+    "lienPresProject": "article/CryptoTrader",
+    "lienTechProject": "articleTech/CryptoTrader",
     "technoProject": ["React", "JavaScript", "Redux", "Electron", "CCXT", "Semantic-UI"]
   },
   {
     "nameProject": "Atlas Map",
     "imageProject": "https://image.noelshack.com/fichiers/2019/21/1/1558356781-atlasmap.png",
-    "lienPresProject": "project/AtlasMap",
-    "lienTechProject": "projetTech/AtlasMap",
+    "descProject": "Site web utilisant l'API Google Maps",
+    "lienPresProject": "article/AtlasMap",
+    "lienTechProject": "articleTech/AtlasMap",
     "technoProject": ["React", "NodeJs", "Express", "Google Maps React", "CSS"]
   },
   {
     "nameProject": "Bonillio",
     "imageProject": "https://image.noelshack.com/fichiers/2019/21/1/1558357125-bonillio.png",
-    "lienPresProject": "project/Bonillio",
-    "lienTechProject": "projetTech/Bonillio",
+    "descProject": "Site web de patisserie",
+    "lienPresProject": "article/Bonillio",
+    "lienTechProject": "articleTech/Bonillio",
     "technoProject": ["Html", "CSS", "JavaScript", "Bootstrap"]
   }
 ]

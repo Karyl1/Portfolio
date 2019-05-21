@@ -10,7 +10,6 @@ router.use(bodyParser.urlencoded({
 
 router.get('/article', (req, res) => {
   res.send(articleJSON);
-  console.log(articleJSON)
 });
 
 module.exports = router;

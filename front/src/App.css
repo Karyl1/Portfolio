@@ -17,6 +17,10 @@
   box-shadow:         inset 0 0 10px #000000;
 }
 
+.buttonNavBar {
+  padding: 200px;
+}
+
 .buttonGroup {
   background: white;
   padding: .5%;
@@ -39,16 +43,24 @@
 }
 
 .titleOverImage {
+  font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 2.5rem;
   position: absolute;
-  top: 95%;
+  bottom: 0%;
   left: 50%;
   transform: translate(-50%,-50%);
   background: black;
   padding: 1%;
-  padding-bottom: 1.5%;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.descProjectAccueil {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  color: white;
+  margin: 0;
+  padding-top: 2.5%;
 }
 
 .accueilTitle {
@@ -59,12 +71,6 @@
   font-size: 1.5rem;
 }
 
-.accueilDescription {
-  color: black;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
 /* .test {
   clip-path: polygon(0 0, 0 42%, 100% 0);
   background: black;
@@ -72,4 +78,14 @@
 
 .underImageAccueil {
   min-height: 350px;
+}
+
+.gridArticle {
+  height: 500px;
+  text-align: center;
+}
+
+.gridArticleh1{
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
 }

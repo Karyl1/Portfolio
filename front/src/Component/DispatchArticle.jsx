@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Accueil from './Accueil';
+import Introduction from './Introduction';
 
 class DispatchArticle extends Component {
 
@@ -18,15 +19,16 @@ class DispatchArticle extends Component {
     const adress = '/article';
     fetch(adress, details)
       .then(res => res.json())
-      .then(res => this.setState({info: res}))
+      .then(res => this.setState({ info: res }))
       .catch(err => new Error(err));
   };
 
-  render() {  
-    const { info } = this.state;  
+  render() {
+    const { info } = this.state;
     return (
       <div>
-      {info.map((element, i) => <Accueil key={'Accueil' + i} article={element} />)}
+        <Introduction />
+        {info.map((element, i) => <Accueil key={'Accueil' + i} a={this.props} article={element} />)}
       </div>
     );
   }

@@ -23,7 +23,7 @@ const styles = (theme) => ({
 
 class Accueil extends Component {
   render() {
-    const { nameProject, imageProject, lienPresProject, lienTechProject, technoProject } = this.props.article;
+    const { nameProject, imageProject, lienPresProject, lienTechProject, technoProject, descProject } = this.props.article;
     const { classes } = this.props;
     return (
       <div className='placeHolder'>
@@ -34,13 +34,19 @@ class Accueil extends Component {
         <polygon  points="0 0, 100 0, 0 15"/>
       </svg> */}
 
-        <Parallax bgImage={imageProject} bgImageSizes='1000' strength={300}>
+        <Parallax
+          bgImage={imageProject}
+          bgImageSizes='1000'
+          strength={300}
+        >
           <div className='parallaxImage' style={{ height: 700 }}>
             <div className='titleOverImage'>{nameProject}</div>
           </div>
         </Parallax>
 
-        <div style={{ height: '100px', background: 'black' }} />
+        <Grid style={{ height: '100px', background: 'black' }}>
+          <h3 className='descProjectAccueil'>{descProject.toUpperCase()}</h3>
+        </Grid>
 
         <Grid
           container
@@ -49,13 +55,28 @@ class Accueil extends Component {
           justify="space-around"
           className='underImageAccueil'
         >
+
           <Grid item xs={4}>
             <h3 className='accueilTitle'> PRESENTATION DU PROJET </h3>
-            <Button size='large' className={classes.button}> LIRE L'ARTICLE </Button>
+            <Button
+              size='large'
+              className={classes.button}
+              onClick={() => this.props.a.history.push(lienPresProject)}
+            >
+              LIRE L'ARTICLE
+          </Button>
           </Grid>
+
           <Grid item xs={4}>
             <h3 className='accueilTitle'> DESCRIPTION TECHNIQUE </h3>
-            <Button size='large' className={classes.button}> LIRE L'ARTICLE </Button>
+            <Button
+              size='large'
+              className={classes.button}
+              onClick={() => this.props.a.history.push(lienTechProject)}
+            >
+              LIRE L'ARTICLE
+            </Button>
+
           </Grid>
           <Grid item xs={12}>
             {technoProject.map((str, i) =>
