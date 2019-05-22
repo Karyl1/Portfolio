@@ -28,10 +28,10 @@ class Article extends Component {
     const display = tableau[this.props.match.params.project];
     display === undefined ? itExist = false : itExist = true;
     return (
-      <div>
+      <div className='backgroundArticle'>
         {itExist ?
           <div>
-
+            
             {/* <div style={{ height: '100px', background: 'black' }} /> */}
             <Grid container justify='center'>
               <Grid item xs={8} className='gridArticle'>
