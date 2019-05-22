@@ -23,7 +23,7 @@ const styles = (theme) => ({
 
 class Accueil extends Component {
   render() {
-    const { nameProject, imageProject, lienPresProject, lienTechProject, technoProject, descProject } = this.props.article;
+    const { nameProject, imageProject, lienPresProject, lienGithubProject, technoProject, descProject } = this.props.article;
     const { classes } = this.props;
     return (
       <div className='placeHolder'>
@@ -68,11 +68,11 @@ class Accueil extends Component {
           </Grid>
 
           <Grid item xs={4}>
-            <h3 className='accueilTitle'> DESCRIPTION TECHNIQUE </h3>
+            <h3 className='accueilTitle'> GITHUB DU PROJET </h3>
             <Button
               size='large'
               className={classes.button}
-              onClick={() => this.props.a.history.push(lienTechProject)}
+              onClick={() => window.open(lienGithubProject)}
             >
               LIRE L'ARTICLE
             </Button>

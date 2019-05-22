@@ -93,3 +93,24 @@
 .backgroundArticle {
   background: #f3f3f3a8;
 }
+
+.hrArticle {
+  margin-top: 2%;
+  border: 1px solid #8b8b8b;
+  width: 80%;
+}
+
+.hrFooter {
+  margin-top: 1%;
+  border: 1px solid #cacaca;
+}
+
+.footerText {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+}
+
+.footerText Button{
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
