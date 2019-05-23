@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Parallax } from 'react-parallax';
+// import { Parallax } from 'react-parallax';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 
 class HeaderApp extends Component {
 
@@ -33,10 +34,12 @@ class HeaderApp extends Component {
     const { fixed, heightNavBar } = this.state;
     const { pathname } = this.props.location;
     let fixedNavbar = fixed ? 'buttonGroupFixed' : 'buttonGroup';
+    const imageSize = document.getElementById('idListenedImg');
+    imageSize !== null ? console.log(imageSize.offsetHeight) : console.log('Not loaded');
     return (
       <Grid>
         <Grid className='logoHeader'>
-          <img src='https://image.noelshack.com/fichiers/2019/21/2/1558447810-welcome.png' alt='welcome' />
+          <img id='idListenedImg' src='https://image.noelshack.com/fichiers/2019/21/2/1558447810-welcome.png' alt='welcome' />
         </Grid>
         {fixed ? <div style={{ height: `${heightNavBar}px` }} /> : ''}
         <Grid item xs={12}>
@@ -46,7 +49,7 @@ class HeaderApp extends Component {
               varient='contained'
               size='medium'
               className='buttonNavBar'
-              onClick={() => this.props.history.push('/')}
+              href='/'
             >
               
               <span style={ pathname === '/' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Accueil</span>
@@ -55,18 +58,20 @@ class HeaderApp extends Component {
             <Button
               style={{ paddingLeft: '2%', paddingRight: '2%' }}
               varient='contained'
+              // disabled
               size='medium'
               className='buttonNavBar'
-              onClick={() => this.props.history.push('parcours')}
+              href='/parcours'
             >
               <span style={ pathname === '/parcours' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Parcours</span>
         </Button>
             <Button
               style={{ paddingLeft: '2%', paddingRight: '2%' }}
               varient='contained'
+              // disabled
               size='medium'
               className='buttonNavBar'
-              onClick={() => this.props.history.push('contact')}
+              href='/contact'
             >
             <span style={ pathname === '/contact' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Contacter</span>
         </Button>

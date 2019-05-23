@@ -50,31 +50,31 @@ class Accueil extends Component {
 
         <Grid
           container
-          spacing={0}
+          spacing={16}
           alignItems="center"
           justify="space-around"
           className='underImageAccueil'
         >
 
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
             <h3 className='accueilTitle'> PRESENTATION DU PROJET </h3>
             <Button
               size='large'
               className={classes.button}
-              onClick={() => this.props.a.history.push(lienPresProject)}
+              href={lienPresProject}
             >
               LIRE L'ARTICLE
           </Button>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item md={4} xs={12}>
             <h3 className='accueilTitle'> GITHUB DU PROJET </h3>
             <Button
               size='large'
               className={classes.button}
               onClick={() => window.open(lienGithubProject)}
             >
-              LIRE L'ARTICLE
+              ACCEDER AU DEPOT
             </Button>
 
           </Grid>

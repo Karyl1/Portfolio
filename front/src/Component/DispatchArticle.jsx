@@ -21,7 +21,7 @@ class DispatchArticle extends Component {
       .then(res => res.json())
       .then(res => this.setState({ info: res }))
       .catch(err => new Error(err));
-  };
+    };
 
   render() {
     const { info } = this.state;
