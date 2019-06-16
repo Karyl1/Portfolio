@@ -1,5 +1,13 @@
 [
   {
+  "nameProject": "RandoSmart",
+  "imageProject": "https://image.noelshack.com/fichiers/2019/21/1/1558356766-cryptotrader.png",
+  "descProject": "Création d'un serveur Backend de sauvegarde de donnée dans Amazon Web Service",
+  "lienPresProject": "article/RandoSmart",
+  "lienGithubProject": "https://github.com/Karyl1/RandoSmart",
+  "technoProject": ["JavaScript", "AWS-SDK", "Express", "React", "Material-UI"]
+  },
+  {
     "nameProject": "CryptoTrader",
     "imageProject": "https://image.noelshack.com/fichiers/2019/21/1/1558356766-cryptotrader.png",
     "descProject": "Application desktop autour de la Crypto-Monaie",
