@@ -19,6 +19,10 @@ class DispatchArticle extends Component {
     const adress = '/article';
     fetch(adress, details)
       .then(res => res.json())
+      // .then(res => {
+      //   console.log(res);
+      //   console.log(JSON.stringify(['React', 'JavaScript', 'Redux', 'Electron', 'CCXT', 'Semantic-UI']))
+      // })
       .then(res => this.setState({ info: res }))
       .catch(err => new Error(err));
     };
