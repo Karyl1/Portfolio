@@ -11,26 +11,30 @@
   width: 25%;
 }
 
+.introduction {
+  text-align: center;
+  padding-right: 8%;
+  padding-left: 8%;
+  letter-spacing: 2px;
+}
+
 .parallaxImage {
   -moz-box-shadow:    inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow:         inset 0 0 10px #000000;
 }
 
-.buttonNavBar {
-  padding: 200px;
-}
-
-.buttonGroup {
+.navbar {
   background: white;
   padding: .5%;
   z-index: 1;
   box-shadow: 1px 0px 10px black;
 }
 
-.buttonGroupFixed {
+.navbarFixed {
   background: white;
   padding: .5%;
+  width: 100%;
   z-index: 1;
   position: fixed;
   top: 0;

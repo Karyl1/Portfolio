@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Accueil from './Accueil';
 import Introduction from './Introduction';
+import Header from './Header';
 
 class DispatchArticle extends Component {
 
@@ -27,6 +28,7 @@ class DispatchArticle extends Component {
     const { info } = this.state;
     return (
       <div>
+        <Header />
         <Introduction />
         {info.map((element, i) => <Accueil key={'Accueil' + i} a={this.props} article={element} />)}
       </div>
