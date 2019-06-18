@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 
-function Footer() {
+export default function Footer() {
     return (
         <div className='footerText'>
             <hr className='hrFooter' />
@@ -18,5 +18,3 @@ function Footer() {
         </div>
     );
 }
-
-export default Footer;

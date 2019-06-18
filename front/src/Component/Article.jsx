@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // import { Parallax } from 'react-parallax';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
@@ -55,63 +55,55 @@ const tableauTech = {
 	}
 }
 
-class Article extends Component {
+export default function Article (props){
+	const [ devMod, setDevMod ] = useState(0);
 
-	state = {
-		devMod: 0
+	function handleChangeDevMod(e, value) {
+		setDevMod(value);
 	}
 
-	handleChangeDevMod = (e, value) => {
-		this.setState({ devMod: value });
-	}
+	let itExist = false;
+	const display = devMod === 0 ? tableauBasic[props.match.params.project] : tableauTech[props.match.params.project];
+	display === undefined ? itExist = false : itExist = true;
+	return (
+		<div className='backgroundArticle'>
+			{itExist ?
+				<div>
+					<hr className='hrArticle' />
+					<Grid container justify='center'>
+						<Tabs
+							value={devMod}
+							indicatorColor='secondary'
+							textColor='secondary'
+							onChange={handleChangeDevMod}
 
-	render() {
-		let itExist = false;
-		const { devMod } = this.state;
-		const display = devMod === 0 ? tableauBasic[this.props.match.params.project] : tableauTech[this.props.match.params.project];
-		display === undefined ? itExist = false : itExist = true;
-		return (
-			<div className='backgroundArticle'>
-				{itExist ?
-					<div>
-						<hr className='hrArticle' />
+						>
+							<Tab label='Description basique' />
+							<Tab label='Desciption technique' />
+						</Tabs>
+					</Grid>
+
+					{devMod === 0 ? 
 						<Grid container justify='center'>
-							<Tabs
-								value={devMod}
-								indicatorColor='secondary'
-								textColor='secondary'
-								onChange={this.handleChangeDevMod}
-
-							>
-								<Tab label='Description basique' />
-								<Tab label='Desciption technique' />
-							</Tabs>
+							<Grid item xs={8} className='gridArticle'>
+								<h1 className='gridArticleh1'>{display.name}</h1>
+								<p>{display.desc}</p>
+							</Grid>
 						</Grid>
-
-						{devMod === 0 ? 
-							<Grid container justify='center'>
-								<Grid item xs={8} className='gridArticle'>
-									<h1 className='gridArticleh1'>{display.name}</h1>
-									<p>{display.desc}</p>
-								</Grid>
+						:	 
+						<Grid container justify='center'>
+							<Grid item xs={8} className='gridArticle'>
+								<h1 className='gridArticleh1'>{display.name}</h1>
+								<p>{display.desc}</p>
 							</Grid>
-					 		:	 
-							<Grid container justify='center'>
-								<Grid item xs={8} className='gridArticle'>
-									<h1 className='gridArticleh1'>{display.name}</h1>
-									<p>{display.desc}</p>
-								</Grid>
-							</Grid>
-						 
-						}
-						<div style={{ height: '100px', background: 'black' }} />
-					</div>
-					:
-					<h1>404</h1>
-				}
-			</div>
-		)
-	}
+						</Grid>
+						
+					}
+					<div style={{ height: '100px', background: 'black' }} />
+				</div>
+				:
+				<h1>404</h1>
+			}
+		</div>
+	)
 }
-
-export default Article;

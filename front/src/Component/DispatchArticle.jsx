@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accueil from './Accueil';
 import Introduction from './Introduction';
 import Header from './Header';
 
-class DispatchArticle extends Component {
+export default function DispatchArticle(props) {
 
-  state = {
-    info: [],
-  };
+  const [ articleContent, setAricleContent ] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => receive_article(), []);
 
+  function receive_article() {
     const details = {
       method: 'GET',
       header: ('Content-Type: application/json'),
@@ -20,20 +19,15 @@ class DispatchArticle extends Component {
     const adress = '/article';
     fetch(adress, details)
       .then(res => res.json())
-      .then(res => this.setState({ info: res }))
+      .then(res => setAricleContent(res))
       .catch(err => new Error(err));
-    };
+  };
 
-  render() {
-    const { info } = this.state;
-    return (
-      <div>
-        <Header />
-        <Introduction />
-        {info.map((element, i) => <Accueil key={'Accueil' + i} a={this.props} article={element} />)}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Header />
+      <Introduction />
+      {articleContent.map((element, i) => <Accueil key={'Accueil' + i} a={props} article={element} />)}
+    </div>
+  );
 }
-
-export default DispatchArticle;
