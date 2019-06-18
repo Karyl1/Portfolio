@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-scroll';
 
 class HeaderApp extends Component {
 
   state = {
     fixed: false,
+    info: [],
   }
 
   componentDidMount() {
@@ -15,6 +16,7 @@ class HeaderApp extends Component {
     const heightNavBar = navbar.offsetHeight;
     const offsetTop = navbar.offsetTop;
     this.setState({ heightNavBar, offsetTop });
+    this.receiveArticle();
   }
 
   handleScroll = (event) => {
@@ -29,60 +31,50 @@ class HeaderApp extends Component {
     }
   }
 
+  receiveArticle = () => {
+    const details = {
+      method: 'GET',
+      header: ('Content-Type: application/json'),
+      mode: 'no-cors',
+    };
+
+    const adress = '/article';
+    fetch(adress, details)
+      .then(res => res.json())
+      .then(res => this.setState({ info: res }))
+      .catch(err => new Error(err));
+    }
+
   render() {
     const { fixed, heightNavBar } = this.state;
-    const { pathname } = this.props.location;
-    let fixedNavbar = fixed ? 'buttonGroupFixed' : 'buttonGroup';
+    let fixedNavbar = fixed ? 'navbarFixed' : 'navbar';
     const imageSize = document.getElementById('idListenedImg');
     imageSize !== null ? console.log(imageSize.offsetHeight) : console.log('Not loaded');
     return (
       <Grid>
-        <Grid className='logoHeader'>
-          <img id='idListenedImg' src='https://image.noelshack.com/fichiers/2019/21/2/1558447810-welcome.png' alt='welcome' />
-        </Grid>
-        {fixed ? <div style={{ height: `${heightNavBar}px` }} /> : ''}
-        <Grid item xs={12}>
-          <Grid id='idListened' container className={fixedNavbar} justify='center'>
-            <Button
-              style={{ paddingLeft: '2%', paddingRight: '2%' }}
-              varient='contained'
-              size='medium'
-              className='buttonNavBar'
-              href='/'
+  
+        {fixed && <div style={{ height: `${heightNavBar*4}px` }} />}
+        <Grid id='idListened' container className={fixedNavbar} justify='center'>
+          {this.state.info.map((el, i) => 
+          
+            <Button 
+              component={Link}
+              activeClass="active"
+              to={el.nameProject}
+              spy={true}
+              smooth={true}
+              hashSpy={true}
+              offset={50}
+              duration={500}
+              isDynamic={true}
             >
-              
-              <span style={ pathname === '/' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Accueil</span>
-              
-        </Button>
-            <Button
-              style={{ paddingLeft: '2%', paddingRight: '2%' }}
-              varient='contained'
-              // disabled
-              size='medium'
-              className='buttonNavBar'
-              href='/parcours'
-            >
-              <span style={ pathname === '/parcours' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Parcours</span>
-        </Button>
-            <Button
-              style={{ paddingLeft: '2%', paddingRight: '2%' }}
-              varient='contained'
-              // disabled
-              size='medium'
-              className='buttonNavBar'
-              href='/contact'
-            >
-            <span style={ pathname === '/contact' ? {color: '#990101', fontWeight: 'bold'} : {color: 'black'}}>Contacter</span>
-        </Button>
-          </Grid>
+              {el.nameProject}
+            </Button>
+          )}
         </Grid>
       </Grid>
     );
   }
 }
-
-HeaderApp.propTypes = {
-  // classes: PropTypes.object.isRequired,
-};
 
 export default HeaderApp;
