@@ -40,7 +40,7 @@
 }
 
 .navbar .navbarButton:hover, .navbar .active .navbarButton  {
-  color: rgba(255, 0, 0, 0.808) !important;
+  color: rgb(175, 16, 16) !important;
 }
 
 .underline {
@@ -52,7 +52,7 @@
   width: 0%;
   height: 1px;
   display: block;
-  background: rgba(255, 0, 0, 0.808);
+  background: rgb(175, 16, 16);
   transition: .5s;
 }
 
@@ -117,10 +117,10 @@
   font-size: 1.5rem;
 }
 
-/* .test {
-  clip-path: polygon(0 0, 0 42%, 100% 0);
-  background: black;
-} */
+.accueilAvatar {
+  color: white !important;
+  background-color: rgb(175, 16, 16) !important;
+}
 
 .underImageAccueil {
   min-height: 350px;
@@ -164,8 +164,8 @@
 }
 
 .footerButton:hover {
-  color: rgba(255, 0, 0, 0.808) !important;
-  border: 1px solid rgba(255, 0, 0, 0.808) !important;
+  color: rgb(175, 16, 16) !important;
+  border: 1px solid rgb(175, 16, 16) !important;
 }
 
 /* Scrollbar custom */

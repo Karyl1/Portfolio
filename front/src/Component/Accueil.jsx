@@ -11,7 +11,7 @@ import { Element } from 'react-scroll';
 const styles = (theme) => ({
   chip: {
     margin: theme.spacing.unit - 5,
-    color: 'red'
+    color: 'rgb(175, 16, 16)'
   },
   button: {
     border: '2px solid black',
@@ -84,7 +84,7 @@ function Accueil(props) {
             {technoProject.map((str, i) =>
               <Chip
                 key={'ChipCryptoTrader' + i}
-                avatar={<Avatar>{str[0]}</Avatar>}
+                avatar={<Avatar className='accueilAvatar'>{str[0]}</Avatar>}
                 label={str}
                 className={classes.chip}
               />)}
