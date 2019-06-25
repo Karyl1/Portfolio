@@ -16,7 +16,7 @@ class App extends Component {
       <Router>
           <Banner />
         <Switch>
-          <Route exact path='/' component={DispatchArticle} />
+            <Route exact path='/' component={DispatchArticle} />
           <Route path='/article/:project' component={Article} />
           <Route path='/parcours' component={Parcours} />
           <Route path='/contact' component={Contact} />

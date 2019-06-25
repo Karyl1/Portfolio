@@ -21,7 +21,7 @@
     "descProject": "Site web utilisant l'API Google Maps",
     "lienPresProject": "article/AtlasMap",
     "lienGithubProject": "https://github.com/Karyl1/googlemap",
-    "technoProject": ["React", "NodeJs", "Express", "Google Maps React", "CSS"]
+    "technoProject": ["React", "JavaScript", "NodeJs", "Express", "Google Maps React", "CSS"]
   },
   {
     "nameProject": "Bonillio",
@@ -29,6 +29,6 @@
     "descProject": "Site web de patisserie",
     "lienPresProject": "article/Bonillio",
     "lienGithubProject": "https://github.com/ArnaudMoya/ProjetPatisserie",
-    "technoProject": ["Html", "CSS", "JavaScript", "Bootstrap"]
+    "technoProject": ["HTML", "CSS", "JavaScript", "Bootstrap"]
   }
 ]

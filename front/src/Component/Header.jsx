@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+/* import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-scroll';
@@ -48,7 +48,8 @@ export default function HeaderApp() {
       .catch(err => new Error(err));
     }
 
-    let fixedNavbar = navbarPosition ? 'navbarFixed' : 'navbar';
+    // let fixedNavbar = navbarPosition ? 'navbarFixed' : 'navbar';
+    let fixedNavbar = 'navbarFixed';
     const imageSize = document.getElementById('idListenedImg');
     imageSize !== null ? console.log('loaded') : console.log('Not loaded');
     return (
@@ -57,9 +58,8 @@ export default function HeaderApp() {
         {navbarPosition && <div style={{ height: `${heightNavBar*4}px` }} />}
         <Grid id='idListened' container className={fixedNavbar} justify='center'>
           {tabs.map((el, i) => 
-            <Button 
+            <Link 
               key={'tabs'+i}
-              component={Link}
               activeClass="active"
               to={el.nameProject}
               spy={true}
@@ -70,18 +70,18 @@ export default function HeaderApp() {
               isDynamic={true}
             >
               {el.nameProject}
-            </Button>
+            </Link>
           )}
         </Grid>
       </Grid>
   );
-}
+} */
 
-{/*
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-scroll';
+import { Navbar, Nav } from 'react-bootstrap';
 
 class HeaderApp extends Component {
 
@@ -132,30 +132,59 @@ class HeaderApp extends Component {
     imageSize !== null ? console.log(imageSize.offsetHeight) : console.log('Not loaded');
     return (
       <Grid>
-  
-        {fixed && <div style={{ height: `${heightNavBar*4}px` }} />}
-        <Grid id='idListened' container className={fixedNavbar} justify='center'>
-          {this.state.info.map((el, i) => 
-          
-            <Button 
-              component={Link}
-              activeClass="active"
-              to={el.nameProject}
-              spy={true}
-              smooth={true}
-              hashSpy={true}
-              offset={50}
-              duration={500}
-              isDynamic={true}
-            >
-              {el.nameProject}
-            </Button>
-          )}
-        </Grid>
+        {fixed && <div style={{ height: `${heightNavBar}px` }} />}
+        <Grid id='idListened' container justify='center'>
+       
+
+        <Navbar className={fixedNavbar} collapseOnSelect expand="lg">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              {this.state.info.map((el, i) =>
+                <Nav.Link
+                  key={'element'+i}
+                  as={Link} 
+                  to={el.nameProject}
+                  spy={true}
+                  smooth={true}
+                  hashSpy={true}
+                  offset={0}
+                  duration={2000}
+                  isDynamic={true}
+                >
+                  <span className='underline'>
+                    <Button
+                      className='navbarButton'
+                    >
+                     {el.nameProject}
+                    </Button>
+                  </span>
+                </Nav.Link>
+                )}
+            </Nav>
+        </Navbar.Collapse>
+            <Nav>
+              <Nav.Link 
+                as={Link} 
+                to='Contact'
+                smooth={true}
+                duration={2000}
+              >
+                <span className='underline'>
+                  <Button
+                    className='navbarButton'
+                  >
+                    Contact
+                  </Button>
+                </span>
+              </Nav.Link>
+            </Nav>
+      </Navbar>
+
+      </Grid>
       </Grid>
     );
   }
 }
 
 export default HeaderApp;
-*/}

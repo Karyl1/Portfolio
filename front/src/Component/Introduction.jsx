@@ -3,10 +3,12 @@ import React from 'react';
 export default function Introduction() {
   return (
     <div>
-      <h1 className='introduction'>
+      <hr className='introHr'/>
+      <p className='introduction'>
         Bienvenue,<br/>
-        ce site a pour but de présenter les différents projet au quel j'ai contribuer seul ou en groupe.
-      </h1>
+        ce site a pour but de présenter les différents projets auquel j'ai contribué seul ou en groupe.
+      </p>
+      <hr className='introHr'/>
     </div>
   );
 }

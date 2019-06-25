@@ -11,6 +11,7 @@ import { Element } from 'react-scroll';
 const styles = (theme) => ({
   chip: {
     margin: theme.spacing.unit - 5,
+    color: 'red'
   },
   button: {
     border: '2px solid black',
@@ -28,8 +29,8 @@ function Accueil(props) {
   return (
     <div className='placeHolder'>
       <Element name={nameProject} className='element'>
-        
         <div style={{ height: '100px', background: 'black' }} />
+        
 
         {/* <svg viewBox="0 0 70 100" xmlns="http://www.w3.org/2000/svg">
         <polygon  points="0 0, 100 0, 0 15"/>
@@ -97,6 +98,5 @@ function Accueil(props) {
 Accueil.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
 
 export default withStyles(styles)(Accueil);
