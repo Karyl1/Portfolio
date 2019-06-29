@@ -27,10 +27,9 @@ function Accueil(props) {
   const { nameProject, imageProject, lienPresProject, lienGithubProject, technoProject, descProject } = props.article;
   const { classes } = props;
   return (
-    <div className='placeHolder'>
+    <div className='main'>
       <Element name={nameProject} className='element'>
-        <div style={{ height: '100px', background: 'black' }} />
-        
+        <div className='containerBlack' />
 
         {/* <svg viewBox="0 0 70 100" xmlns="http://www.w3.org/2000/svg">
         <polygon  points="0 0, 100 0, 0 15"/>
@@ -46,7 +45,7 @@ function Accueil(props) {
           </div>
         </Parallax>
 
-        <Grid style={{ height: '100px', background: 'black' }}>
+        <Grid container alignItems='center' justify='center' className='containerBlack'>
           <h3 className='descProjectAccueil'>{descProject.toUpperCase()}</h3>
         </Grid>
 
@@ -83,7 +82,7 @@ function Accueil(props) {
           <Grid item xs={12}>
             {technoProject.map((str, i) =>
               <Chip
-                key={'ChipCryptoTrader' + i}
+                key={`chipsTechno${i}`}
                 avatar={<Avatar className='accueilAvatar'>{str[0]}</Avatar>}
                 label={str}
                 className={classes.chip}
