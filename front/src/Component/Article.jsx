@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import { Parallax } from 'react-parallax';
+/* import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -69,7 +68,7 @@ export default function Article (props){
 		<div className='backgroundArticle'>
 			{itExist ?
 				<div>
-					<hr className='hrArticle' />
+					<hr className='hrArticle'/>
 					<Grid container justify='center'>
 						<Tabs
 							value={devMod}
@@ -106,4 +105,28 @@ export default function Article (props){
 			}
 		</div>
 	)
+} */
+
+import React from 'react';
+import RandoSmart from './Articles/RandoSmart';
+import AtlasMap from './Articles/AtlasMap';
+import Bonillio from './Articles/Bonillio';
+import CryptoTrader from './Articles/CryptoTrader';
+import NotFound from './NotFound';
+
+export default function Article(props) {
+	const components = {
+		RandoSmart: <RandoSmart />,
+		CryptoTrader: <CryptoTrader />,
+		AtlasMap: <AtlasMap />,
+		Bonillio: <Bonillio />,
+		NotFound: <NotFound />
+	};
+	const toDisplay = props.match.params.project;
+	const WillBeShowing = components[toDisplay] !== undefined ? components[toDisplay] : components.NotFound;
+	return (
+		<div>
+			{WillBeShowing}
+		</div>
+	);
 }

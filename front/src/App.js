@@ -17,7 +17,7 @@ class App extends Component {
           <Banner />
         <Switch>
             <Route exact path='/' component={DispatchArticle} />
-          <Route path='/article/:project' component={Article} />
+          <Route path='/articles/:project' component={Article} />
           <Route path='/parcours' component={Parcours} />
           <Route path='/contact' component={Contact} />
           <Route path='/CryptoTrader' component={PrivateGithub} />
