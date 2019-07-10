@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Accueil from './Accueil';
 import Introduction from './Introduction';
+import Banner from './Banner';
 import Header from './Header';
 
 export default function DispatchArticle(props) {
@@ -25,6 +26,7 @@ export default function DispatchArticle(props) {
 
   return (
     <div>
+      <Banner />
       <Header />
       <Introduction />
       {articleContent.map((element, i) => <Accueil key={'Accueil' + i} a={props} article={element} />)}

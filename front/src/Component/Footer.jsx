@@ -3,18 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Element } from 'react-scroll';
-
-const styles = theme => ({
-    button: {
-        border: '2px solid black',
-        letterSpacing: '2px',
-        '&:hover': {
-          backgroundColor: 'black',
-          color: 'white',
-          transitionDuration: '.6s',
-        }
-    }
-});
+import styles from './MaterialConfig/MaterialConfig'
 
 function Footer(props) {
     const { classes } = props;

@@ -7,22 +7,9 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { Element } from 'react-scroll';
-import Smartphone from '../asset/Logo/baseline-smartphone-24px.svg';
+import styles from './MaterialConfig/MaterialConfig'
+// import Smartphone from '../asset/Logo/baseline-smartphone-24px.svg';
 
-const styles = (theme) => ({
-  chip: {
-    margin: theme.spacing.unit - 5,
-    color: 'rgb(175, 16, 16)'
-  },
-  button: {
-    border: '2px solid black',
-    '&:hover': {
-      backgroundColor: 'black',
-      color: 'white',
-      transitionDuration: '.6s',
-    },
-  }
-});
 
 function Accueil(props) {
   const { nameProject, imageProject, lienPresProject, lienGithubProject, technoProject, descProject } = props.article;
