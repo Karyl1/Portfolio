@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
     mainTitle: {
@@ -22,37 +21,15 @@ export default function Bonillio() {
     const classes = useStyles();
     return (
         <Grid>
-            <Typography variant='h3' align='center' className={`parallaxImage ${classes.mainTitle}`}>
-                Bonillio
-            </Typography>
-            <Grid container direction='row' justify='center' alignItems='center' spacing={3}>
-                <Grid item md={7} xs={11}>
-                <Paper>
-                    <Typography variant='h4' align='center' gutterBottom>
-                        Lorem ipsum dolor sit amet
-                    </Typography>
-                    <Typography align='justify' className={classes.paragraph}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit quisquam dignissimos soluta blanditiis aliquid in a, enim tempore
-                     facilis laboriosam saepe consequuntur officia dicta numquam nesciunt quas corporis quae ullam.
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet id aspernatur nisi sapiente, molestias inventore 
-                     dolorum! Illo enim, odio dolor assumenda laboriosam illum iste magni veritatis dolores eius. Quia, quod.
-                    </Typography>
-                </Paper>
-                </Grid>
-                <Grid item>
-                    <img src='https://via.placeholder.com/400x300' alt='placeholder' />
-                </Grid>
-                <Grid container item xs={11}>
-                    <Paper>
-                        <Typography align='justify' className={classes.paragraph}>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur odit eum corrupti officia perferendis. Inventore nesciunt dolorem repellat quod 
-                            deleniti quisquam! Veritatis, ipsam possimus? Repudiandae ex beatae aliquam sed hic.
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore beatae soluta quaerat officiis labore doloremque unde 
-                            odit pariatur numquam voluptates dicta distinctio temporibus esse nobis, a illum magnam sequi culpa?
-                        </Typography>
-                    </Paper>
-                </Grid>
-            </Grid>
+            <Container>
+                <h1>Placeholder</h1>
+                <img src='https://via.placeholder.com/250x250' alt='placeholder' className='articleFloatText'/>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, excepturi consectetur. Optio dolore est nisi unde dolores, consectetur beatae harum excepturi debitis ut? Quos repellat sed, nulla nesciunt aspernatur a? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi laborum consequuntur voluptate minima, blanditiis eos aliquam ullam quam eum consectetur ex, eligendi aspernatur doloremque cumque ab. Eos natus doloribus unde! lrem
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere expedita optio animi reprehenderit nulla aliquam quaerat? Hic quam autem, at totam dignissimos asperiores excepturi veniam, in sequi ipsa architecto exercitationem.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio magni totam fugiat nobis officia commodi numquam nemo impedit iste sit. Iste nobis ullam nam quisquam corporis? Temporibus itaque doloribus amet?
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate soluta quo nulla aut mollitia cumque, repellendus maiores suscipit sint voluptatem magnam eos eligendi, eveniet fugiat neque natus sit, nihil quaerat?
+                </p>
+            </Container>
         </Grid>
     );
 }

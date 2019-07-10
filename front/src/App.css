@@ -129,6 +129,10 @@
   min-height: 350px;
 }
 
+.articleFloatText {
+  float: right;
+}
+
 .gridArticle {
   height: 500px;
   text-align: center;
