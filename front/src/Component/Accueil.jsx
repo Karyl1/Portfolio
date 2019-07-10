@@ -7,6 +7,7 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { Element } from 'react-scroll';
+import Smartphone from '../asset/Logo/baseline-smartphone-24px.svg';
 
 const styles = (theme) => ({
   chip: {
@@ -29,7 +30,12 @@ function Accueil(props) {
   return (
     <div className='main'>
       <Element name={nameProject} className='element'>
-        <div className='containerBlack' />
+
+        <Grid container alignContent='center' className='containerBlack'>
+          {/* <Grid item>
+          <img src={Smartphone} alt='smartphone' className='assetAccueil'/>
+          </Grid> */}
+        </Grid>
 
         {/* <svg viewBox="0 0 70 100" xmlns="http://www.w3.org/2000/svg">
         <polygon  points="0 0, 100 0, 0 15"/>

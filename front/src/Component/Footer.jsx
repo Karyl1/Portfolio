@@ -28,15 +28,6 @@ function Footer(props) {
                     <Grid container item justify='center'>
                         <Button
                             variant="outlined"
-                            className={classes.button}
-                            onClick={() => window.open('https://www.linkedin.com/in/marty-monvoisin/')} 
-                            style={{ marginLeft: '2%', marginRight: '2%' }}
-                        >
-                                Linkedin
-                        </Button>
-
-                        <Button
-                            variant="outlined"
                             className={classes.button} 
                             onClick={() => window.open('https://github.com/Karyl1')} 
                             style={{ marginLeft: '2%', marginRight: '2%' }}
