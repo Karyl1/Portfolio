@@ -103,7 +103,7 @@ class HeaderApp extends Component {
     const { fixed, offsetTop } = this.state;
     const currentScrollTop = window.scrollY;
 
-    window.addEventListener('resize', this.handleResize);
+    // window.addEventListener('resize', this.handleResize);
     if (currentScrollTop >= offsetTop && fixed === false) {
       this.setState({ fixed: true });
     } else if (currentScrollTop < offsetTop && fixed === true) {
@@ -128,13 +128,10 @@ class HeaderApp extends Component {
   render() {
     const { fixed, heightNavBar } = this.state;
     let fixedNavbar = fixed ? 'navbarFixed' : 'navbar';
-    const imageSize = document.getElementById('idListenedImg');
-    imageSize !== null ? console.log(imageSize.offsetHeight) : console.log('Not loaded');
     return (
       <Grid>
         {fixed && <div style={{ height: `${heightNavBar}px` }} />}
         <Grid id='idListened' container justify='center'>
-       
 
         <Navbar className={fixedNavbar} collapseOnSelect expand="lg">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
