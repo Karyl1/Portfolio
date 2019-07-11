@@ -137,18 +137,25 @@
   min-height: 350px;
 }
 
-.articleHeaderImageBackground {
+/* .articleHeaderImageBackground {
   background-image: url('https://image.noelshack.com/fichiers/2019/28/3/1562788130-header-background.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
+} */
+.articleHeaderImageBackground {
+  background-color: black;
 }
 
-.articleBorder {
+.articleContainer {
   margin-top: 1%;
   border-left: 2px solid #cacaca;
   border-right: 2px solid #cacaca;
+}
+
+.articleContainer p {
+  text-align: justify;
 }
 
 .articleGrid {
@@ -165,9 +172,13 @@
   text-align: center;
   color: white;
   font-size: 2.5rem;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   letter-spacing: 2px;
+}
+
+.articleUnderTitle {
+  text-align: center;
 }
 
 .articleImageFloatTextRight {
