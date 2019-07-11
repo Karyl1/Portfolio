@@ -2,7 +2,7 @@
   {
   "nameProject": "RandoSmart",
   "imageProject": "https://image.noelshack.com/fichiers/2019/25/2/1560857345-randosmart.png",
-  "descProject": "Création d'un serveur Backend de sauvegarde de donnée dans Amazon Web Service",
+  "descProject": "Serveur Backend de sauvegarde de donnée dans Amazon Web Service",
   "lienPresProject": "articles/RandoSmart",
   "lienGithubProject": "https://github.com/Karyl1/RandoSmart",
   "technoProject": ["JavaScript", "AWS-SDK", "Express", "Multer", "React", "Material-UI"]

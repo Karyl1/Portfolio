@@ -44,7 +44,7 @@ function Accueil(props) {
 
         <Grid
           container
-          spacing={16}
+          spacing={2}
           alignItems="center"
           justify="space-around"
           className='underImageAccueil'
