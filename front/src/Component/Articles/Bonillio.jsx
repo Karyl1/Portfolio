@@ -14,7 +14,7 @@ function Bonillio(props) {
             <h1 className='articleTitle'>Bonillio</h1>
         </div>
             <Grid className='articleGrid'>
-                <Container maxWidth='md' className='articleContainer'>
+                <Container maxWidth='lg' className='articleContainer'>
                     <h3 className='articleUnderTitle'>Qu'est ce que Bonillio ?</h3>
                     <p>
                         Bonillio est un projet qui nous a été demandé au cours de notre formation de <strong>développeur web et mobile</strong>. 
