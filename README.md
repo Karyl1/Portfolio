@@ -14,7 +14,7 @@
 
 	git clone https://github.com/Karyl1/RandoSmart
 
-	cd randosmart/
+	cd Portfolio/
 
 ## Lancer le backend:
 
