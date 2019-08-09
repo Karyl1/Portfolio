@@ -29,7 +29,7 @@ export default function DispatchArticle(props) {
       <Banner />
       <Header />
       <Introduction />
-      {articleContent.map((element, i) => <Accueil key={'Accueil' + i} a={props} article={element} />)}
+      {articleContent.map((element, i) => <Accueil key={'Accueil' + i} article={element} />)}
     </div>
   );
 }
