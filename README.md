@@ -12,7 +12,7 @@
 ```
 ## Cloner le projet :
 
-	git clone https://github.com/Karyl1/RandoSmart
+	git clone https://github.com/Karyl1/Portfolio
 
 	cd Portfolio/
 
