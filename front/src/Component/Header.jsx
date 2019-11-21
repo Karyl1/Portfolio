@@ -62,7 +62,7 @@ class HeaderApp extends Component {
                 <Nav.Link
                   key={'element'+i}
                   as={Link} 
-                  to={el.nameProject}
+                  to={el.name_project}
                   spy={true}
                   smooth={true}
                   hashSpy={true}
@@ -74,7 +74,7 @@ class HeaderApp extends Component {
                     <Button
                       className='navbarButton'
                     >
-                     {el.nameProject}
+                     {el.name_project}
                     </Button>
                   </span>
                 </Nav.Link>

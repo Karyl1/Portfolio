@@ -7,6 +7,9 @@ const styles = theme => ({
           color: 'white',
           transitionDuration: '.6s',
         }
+    },
+    chip: {
+      margin: '.5rem'
     }
 });
 

@@ -21,7 +21,7 @@ export default function DispatchArticle(props) {
     fetch(adress, details)
       .then(res => res.json())
       .then(res => setAricleContent(res))
-      .catch(err => new Error(err));
+      .catch(err => console.error(err));
   };
 
   return (
