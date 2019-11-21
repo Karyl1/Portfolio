@@ -11,9 +11,9 @@ router.use(bodyParser.urlencoded({
 
 connection.connect(function(err) {
     if(err) 
-      console.log('error: ', err.stack);
+      console.log('error:', err.stack);
     else 
-      console.log('connected as id: ', connection.threadId);
+      console.log('connected as id:', connection.threadId);
 })
 
 function getArticles(callback) {
@@ -26,19 +26,14 @@ function getArticles(callback) {
 }
 
 router.get('/article', (req, res) => {
-  /* getArticles(function(err, result) {
+  getArticles(function(err, result) {
     if(err)
       res.status(500).json({ error: err.message });
-    else 
+    else {
+      console.log(result)
       res.json(result);
-  }) */
-  getArticles(function(error, result) {
-    if(error)
-      console.log(error);
-    else 
-      console.log(result);
-  })
-  res.send(articleJSON);
-});
+    }
+  });
+})
 
 module.exports = router;
