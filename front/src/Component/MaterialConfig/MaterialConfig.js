@@ -10,6 +10,18 @@ const styles = theme => ({
     },
     chip: {
       margin: '.5rem'
+    },
+    dateComment: {
+        padding: '.1rem',
+        marginLeft: '.7rem'
+    },
+    sizeComment: {
+        maxWidth: '60%',
+        padding: '.6rem;'
+    },
+    avatarComment: {
+        paddingTop: '.3rem',
+        margin: '.3rem'
     }
 });
 

@@ -7,12 +7,12 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import { Element } from 'react-scroll';
-import styles from './MaterialConfig/MaterialConfig'
-// import Smartphone from '../asset/Logo/baseline-smartphone-24px.svg';
+import styles from './MaterialConfig/MaterialConfig';
+import { connect } from 'react-redux';
 
 
 function Accueil(props) {
-  const { name_project, image_project, lien_pres_project, lien_github_project, techno_project, desc_project } = props.article;
+  const { id_project, name_project, image_project, lien_pres_project, lien_github_project, techno_project, desc_project } = props.article;
   const { classes } = props;
   return (
     <div className='main'>
@@ -48,7 +48,7 @@ function Accueil(props) {
             <Button
               size='large'
               className={classes.button}
-              href={lien_pres_project}
+              href={`${lien_pres_project}`}
             >
               LIRE L'ARTICLE
           </Button>
@@ -84,4 +84,8 @@ Accueil.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Accueil);
+const mapStateToProps = store => ({
+  article_selected: store.article_selected
+})
+
+export default connect(mapStateToProps)(withStyles(styles)(Accueil));

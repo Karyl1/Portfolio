@@ -39,10 +39,10 @@ class HeaderApp extends Component {
       mode: 'no-cors',
     };
 
-    const adress = '/article';
+    const adress = '/get_articles';
     fetch(adress, details)
       .then(res => res.json())
-      .then(res => this.setState({ info: res }))
+      .then(res => this.setState({ info: res.data }))
       .catch(err => new Error(err));
     }
 

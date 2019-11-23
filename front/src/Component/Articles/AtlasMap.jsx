@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Styles from '../MaterialConfig/MaterialConfig';
+import back from '../backend-service';
 
 function AtlasMap(props) {
     const { classes } = props;

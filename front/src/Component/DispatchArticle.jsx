@@ -17,10 +17,10 @@ export default function DispatchArticle(props) {
       mode: 'no-cors',
     };
 
-    const adress = '/article';
+    const adress = '/get_articles';
     fetch(adress, details)
       .then(res => res.json())
-      .then(res => setAricleContent(res))
+      .then(res => setAricleContent(res.data))
       .catch(err => console.error(err));
   };
 
