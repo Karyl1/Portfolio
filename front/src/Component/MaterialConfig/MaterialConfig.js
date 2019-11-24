@@ -13,15 +13,18 @@ const styles = theme => ({
     },
     dateComment: {
         padding: '.1rem',
-        marginLeft: '.7rem'
-    },
-    sizeComment: {
-        maxWidth: '60%',
-        padding: '.6rem;'
+        marginLeft: '.4rem'
     },
     avatarComment: {
-        paddingTop: '.3rem',
-        margin: '.3rem'
+        paddingTop: '.2rem',
+        margin: '.3rem',
+        paddingRight: '.6rem'
+    },
+    contentComment: {
+        lineHeight: '1'
+    },
+    comment: {
+        margin: '1rem'
     }
 });
 
