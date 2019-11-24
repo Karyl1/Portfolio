@@ -1,11 +1,11 @@
-const initialState = {article_selected: 0}
+const initialState = {userInfo: {}, isConnected: false}
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case "UPDATE_ARTICLE_SELECTED":
-            console.log(action)
+        case "SET_USER":
             return {
-                article_selected: action.selected
+                userInfo: action.data,
+                isConnected: action.isConnected
             };
         default: 
             return state; 

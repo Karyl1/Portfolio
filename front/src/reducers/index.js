@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import article_selected from './Article_selected';
+import userInfo from './userConnected';
 
 const reducers = combineReducers({
-    article_selected,
+    userInfo,
 })
 
 export default reducers
