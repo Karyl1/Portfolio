@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleLogout, GoogleLogin } from 'react-google-login';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
+import { connect } from 'react-redux';
 
 const clientId = '1023684340740-vt8dl40u1mmunpbni943hmcj23sqmgjt.apps.googleusercontent.com';
 
-const GoogleOAuth = () => {
+const GoogleOAuth = (props) => {
     const [isConnect, setIsConnect] = useState(false);
-    const [userInfo, setUserInfo] = useState({});
     useEffect(() => isStorage());
 
     const isStorage = () => {
@@ -24,8 +24,13 @@ const GoogleOAuth = () => {
             .then(res => {
                 if(response === 200) {
                 setIsConnect(true);
-                setUserInfo(res)
-                console.log(res)
+                props.dispatch({
+                    type: 'SET_USER',
+                    data: userProfile.userProfile,
+                    isConnected: true
+                })
+                } else {
+                    console.error(response, "Erreur lors de la connexion");
                 }
             })
             .catch(err => console.error(err))
@@ -33,13 +38,30 @@ const GoogleOAuth = () => {
     }
 
     const success = response => {
-        const toStorage = {
-            token: response.tokenId,
-            userProfile: response.profileObj
-        }
-        localStorage.setItem('google-access', JSON.stringify(toStorage));
-        setIsConnect(true);
-        console.log(response) // eslint-disable-line
+        fetch('/get_account', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' }, 
+            body: JSON.stringify(response.profileObj)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if(res.status === 200) {
+                const toStorage = {
+                    token: response.tokenId,
+                    userProfile: res.data[0]
+                }
+                localStorage.setItem('google-access', JSON.stringify(toStorage));
+                setIsConnect(true);
+                props.dispatch({
+                    type: 'SET_USER',
+                    data: res.data[0],
+                    isConnected: true
+                })
+            } else {
+                console.error(res.status, 'Erreur de la connexion')
+            }
+        })
+        .catch(err => console.log(err))
     }
 
     const error = response => {
@@ -49,6 +71,11 @@ const GoogleOAuth = () => {
     const logout = () => {
         localStorage.removeItem('google-access');
         setIsConnect(false);
+        props.dispatch({
+            type: 'SET_USER',
+            data: {},
+            isConnected: false
+        })
         console.log('logout') // eslint-disable-line
     }
 
@@ -77,4 +104,8 @@ const GoogleOAuth = () => {
       
 }
 
-export default GoogleOAuth;
+const mapDispatchToProps = (store) => ({
+    userInfo: store.data
+})
+
+export default connect(mapDispatchToProps)(GoogleOAuth);
