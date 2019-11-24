@@ -1,78 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { withStyles } from '@material-ui/core/Styles';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Styles from '../MaterialConfig/MaterialConfig';
 import Container from '@material-ui/core/Container';
 import back from '../backend-service';
 import Comment from '../Comment';
 import GoogleOAuth from '../GoogleOAuth';
+import { connect } from 'react-redux';
 
 function RandoSmart(props) {
-    const { classes } = props;
-
-    // recupère la liste des commentaires
+    const { classes, isConnected, userConnected } = props;
     const [commentList, setCommentList] = useState({});
+    const [contentComment, setContentComment] = useState('');
+    const [contentState, setContentState] = useState(false);
+    // recupère la liste des commentaires
+    useEffect(() => {getCommentList()}, []);
+    const idProject = 1;
+
+    const getCommentList = () => {
+        const id_project = idProject;
+        const url = `/get_comment?index=${id_project}`;
+        
+        back.getRequest(url, response);
+    }
 
     const response = (response) => {
         if(response.status === 200) {
             if(response.data !== undefined)
-                setCommentList(response.data);
-            console.log(response.message);
+                setCommentList(response.data.reverse());
+            if(response.message !== undefined)
+                console.log(response.message);
             }
         else
             console.error(response.data);
     }
 
-    // 1 = id_project
-    useEffect(() => {
-        const id_project = 1;
-        const url = `/get_comment?index=${id_project}`;
-        
-        back.getRequest(url, response);
-    }, []);
-
-    const addComment = () => {
-        // 1 = id_user, blabla = content, 1 = id_project 
-        const id_user = 1;
-        const content = 'tests';
-        const id_project = 1;
-        const body = JSON.stringify({id_user, content, id_project});
-        const url = '/add_comment';
-        back.postRequest(url, body, response);
+    const addComment = (e) => {
+        e.preventDefault();
+        if(isConnected) {
+            if( contentComment !== null && contentComment.length > 3) {
+                const id_user = userConnected.id_user;
+                const id_project = idProject;
+                const content = contentComment;
+                const body = JSON.stringify({id_user, content, id_project});
+                const url = '/add_comment';
+                setContentComment('');
+                back.postRequest(url, body, response);
+                getCommentList();
+            } else {
+                setContentState(true)
+            }
+        } else {
+            alert('Vous n\'êtes pas connecté');
+        }
     }
 
-    const addLikeComment = () => {
-        //3 = id_user, 1 = id_comment
-        const id_user = 1;
-        const id_comment = 2;
-        const url = '/add_like_comment';
-        const body = JSON.stringify({id_user, id_comment});
-        back.postRequest(url, body, response)
+    const handleChange = e => {
+        setContentComment(e.target.value);
+        if (e.target.value.length > 3) {
+            setContentState(false);
+        }
     }
 
-    const updateComment = () => {
-        const id_user = 1; // id de l'utilisateur
-        const id_comment = 2;
-        const content_comment = 'it works';
-        const body = JSON.stringify({id_user, id_comment, content_comment});
-        const url = '/update_comment';
-        back.updateRequest(url, body, response);
-    }
-
-    const deleteComment = () => {
-        const id_user = 1; // id de l'utilisateur
-        const id_comment = 2;
-        const body = JSON.stringify({id_user, id_comment});
-        const url = '/delete_comment';
-        back.deleteRequest(url, body, response);
-    }
     return (
         <div>
-            <button onClick={() => addComment()}>Ajout commentaire</button>
-            <button onClick={() => addLikeComment()}>Like commentaire</button>
-            <button onClick={() => updateComment()}>Modifie commentaire</button>
-            <button onClick={() => deleteComment()}>Supprime commentaire</button>
             <div className='articleHeaderImageBackground'>
                 <h1 className='articleTitle'>RandoSmart</h1>
             </div>
@@ -102,11 +95,31 @@ function RandoSmart(props) {
             
             <hr className='hrGrey'/>
 
-            <GoogleOAuth/>
-            {Object.values(commentList).map((el, i) => <Comment userInfo={el} key={'comment '+i}/>)}
-
+            <Grid container style={{maxWidth: '85%', margin: 'auto'}}>
+                <Grid item xs={3}>
+                    <GoogleOAuth/>
+                </Grid>
+                <Grid item xs={6}>
+                    <h1 className='articleComment'>Espace commentaire</h1>
+                </Grid>
+                <Grid item xs={3}>
+                </Grid>
+                <Grid item xs={12} >
+                    <form onSubmit={addComment}>
+                        <TextField fullWidth error={contentState} id="standard-basic" label="Ajouter un commentaire" onChange={handleChange} value={contentComment}/>
+                    </form>
+                </Grid>
+                <Grid item xs={12}>
+                    {Object.values(commentList).map((el, i) => <Comment commentInfo={el} refreshComment={getCommentList} callback={response} key={'comment '+i}/>)}
+                </Grid>
+            </Grid>
         </div>
     );
 }
 
-export default withStyles(Styles)(RandoSmart);
+const mapStateToProps = store => {
+    const { userInfo, isConnected } = store.userInfo;
+    return { userConnected: userInfo, isConnected };
+}
+
+export default connect(mapStateToProps, null)(withStyles(Styles)(RandoSmart));
