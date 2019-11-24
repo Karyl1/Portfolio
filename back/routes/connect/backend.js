@@ -72,13 +72,13 @@ router.post('/add_like_comment', (req, res) => {
 // Modifie le contenue d'un commentaire
 // body values: id_user, id_comment, content_comment
 router.put('/update_comment', (req, res) => {
-  const { id_user, id_comment, content_comment } = req.body;
+  const { idUser, idComment, contentComment } = req.body;
   connection.query(`
       UPDATE comment_article
-      SET comment_article.content_comment = "${content_comment}",
+      SET comment_article.content_comment = "${contentComment}",
           comment_article.is_edited_comment = 1
-      WHERE comment_article.id_comment = ${id_comment}
-      AND comment_article.id_user = ${id_user}`, (error, result) => {
+      WHERE comment_article.id_comment = ${idComment}
+      AND comment_article.id_user = ${idUser}`, (error, result) => {
       if(!error)
           res.json({message: 'Commentaire modifié avec succès', status: 200});
       else
@@ -99,6 +99,16 @@ router.delete('/delete_comment', (req, res) => {
           else
               res.status(500).json({message: 'Erreur lors de la suppréssion du commentaire', status: 500});
       })
+})
+
+router.post('/get_account', (req, res) => {
+  const { familyName, givenName, imageUrl, email, googleId } = req.body;
+  connection.query(`call get_user_account("${familyName}", "${givenName}", "${imageUrl}", "${email}", "${googleId}")`, (error, result) => {
+      if(!error)
+        res.json({data: result[0], status: 200});
+      else 
+        res.status(500).json({message: 'Erreur lors de la récupération des informations du compte', status: 500});
+  })
 })
 
 
