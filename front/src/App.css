@@ -126,6 +126,7 @@
   color: black;
   text-align: center;
   font-size: 1.5rem;
+  margin: 1.5rem;
 }
 
 .accueilAvatar {
@@ -213,6 +214,12 @@
   margin-top: 2%;
   border: 1px solid #8b8b8b;
   width: 80%;
+}
+
+.articleComment {
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
 .hrFooter {

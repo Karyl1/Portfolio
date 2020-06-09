@@ -1,12 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Styles from '../MaterialConfig/MaterialConfig';
+import back from '../backend-service';
+import TextField from '@material-ui/core/TextField';
+import Comment from '../Comment';
+import GoogleOAuth from '../GoogleOAuth';
+import { connect } from 'react-redux';
 
 function AtlasMap(props) {
-    const { classes } = props;
+    const { classes, isConnected, userConnected } = props;
+    const [commentList, setCommentList] = useState({});
+    const [contentComment, setContentComment] = useState('');
+    const [contentState, setContentState] = useState(false);
+    // recupère la liste des commentaires
+    useEffect(() => {getCommentList()}, []);
+    const idProject = 3;
+
+    const getCommentList = () => {
+        const id_project = idProject;
+        const url = `/get_comment?index=${id_project}`;
+        
+        back.getRequest(url, response);
+    }
+
+    const response = (response) => {
+        if(response.status === 200) {
+            if(response.data !== undefined)
+                setCommentList(response.data.reverse());
+            if(response.message !== undefined)
+                console.log(response.message);
+            }
+        else
+            console.error(response.data);
+    }
+
+    const addComment = (e) => {
+        e.preventDefault();
+        if(isConnected) {
+            if( contentComment !== null && contentComment.length > 3) {
+                const id_user = userConnected.id_user;
+                const id_project = idProject;
+                const content = contentComment;
+                const body = JSON.stringify({id_user, content, id_project});
+                const url = '/add_comment';
+                setContentComment('');
+                back.postRequest(url, body, response);
+                getCommentList();
+            } else {
+                setContentState(true)
+            }
+        } else {
+            alert('Vous n\'êtes pas connecté');
+        }
+    }
+
+    const handleChange = e => {
+        setContentComment(e.target.value);
+        if (e.target.value.length > 3) {
+            setContentState(false);
+        }
+    }
+
     return (
         <div>
         <div className='articleHeaderImageBackground'>
@@ -46,8 +103,34 @@ function AtlasMap(props) {
             <Grid container justify='center'>
                 <Button className={classes.button} href='/'>Retour à l'accueil</Button>
             </Grid>
+            
+            <hr className='hrGrey'/>
+
+            <Grid container style={{maxWidth: '85%', margin: 'auto'}}>
+                <Grid item xs={3}>
+                    <GoogleOAuth/>
+                </Grid>
+                <Grid item xs={6}>
+                    <h1 className='articleComment'>Espace commentaire</h1>
+                </Grid>
+                <Grid item xs={3}>
+                </Grid>
+                <Grid item xs={12} >
+                    <form onSubmit={addComment}>
+                        <TextField fullWidth error={contentState} id="standard-basic" label="Ajouter un commentaire" onChange={handleChange} value={contentComment}/>
+                    </form>
+                </Grid>
+                <Grid item xs={12}>
+                    {Object.values(commentList).map((el, i) => <Comment commentInfo={el} refreshComment={getCommentList} callback={response} key={'comment '+i}/>)}
+                </Grid>
+            </Grid>
         </div>
     );
 }
 
-export default withStyles(Styles)(AtlasMap);
+const mapStateToProps = store => {
+    const { userInfo, isConnected } = store.userInfo;
+    return { userConnected: userInfo, isConnected };
+}
+
+export default connect(mapStateToProps, null)(withStyles(Styles)(AtlasMap));

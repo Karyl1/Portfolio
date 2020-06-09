@@ -39,10 +39,10 @@ class HeaderApp extends Component {
       mode: 'no-cors',
     };
 
-    const adress = '/article';
+    const adress = '/get_articles';
     fetch(adress, details)
       .then(res => res.json())
-      .then(res => this.setState({ info: res }))
+      .then(res => this.setState({ info: res.data }))
       .catch(err => new Error(err));
     }
 
@@ -62,7 +62,7 @@ class HeaderApp extends Component {
                 <Nav.Link
                   key={'element'+i}
                   as={Link} 
-                  to={el.nameProject}
+                  to={el.name_project}
                   spy={true}
                   smooth={true}
                   hashSpy={true}
@@ -74,7 +74,7 @@ class HeaderApp extends Component {
                     <Button
                       className='navbarButton'
                     >
-                     {el.nameProject}
+                     {el.name_project}
                     </Button>
                   </span>
                 </Nav.Link>
